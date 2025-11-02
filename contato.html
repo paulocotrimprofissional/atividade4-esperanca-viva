@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esperança Viva | Fale Conosco</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* Animação suave da seção */
+    .contato {
+      animation: fadeInUp 0.8s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===============================
+       💬 Toast (mensagens flutuantes)
+       =============================== */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      max-width: 360px;
+      color: var(--cor-clara);
+      font-weight: 600;
+      padding: 14px 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.4s ease;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .toast.ativo {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast-sucesso {
+      background: rgba(110, 146, 115, 0.9);
+    }
+
+    .toast-erro {
+      background: rgba(229, 57, 53, 0.9);
+    }
+  </style>
+</div>
+</head>
+
+<body>
+  <!-- ===============================
+       CABEÇALHO E MENU GLOBAL
+  =============================== -->
+  <header class="site-header">
+    <div class="header-content">
+      <img src="assets/titulo.png" alt="Símbolo Esperança Viva" class="logo">
+      <h1>Esperança Viva</h1>
+
+      <!-- 🍔 Botão do menu hamburguer -->
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <nav>
+      <ul id="menu">
+        <li><a href="index.html">Início</a></li>
+        <li class="dropdown">
+          <a href="projetos.html">Projetos</a>
+          <ul class="submenu">
+            <li><a href="projetos.html#educacao">Educação</a></li>
+            <li><a href="projetos.html#saude">Saúde</a></li>
+            <li><a href="projetos.html#alimentacao">Alimentação</a></li>
+          </ul>
+        </li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="contato.html" class="ativo">Contato</a></li>
+
+        <!-- ♿ Botão de alto contraste -->
+        <li>
+          <button
+            id="toggle-contrast"
+            class="acessibilidade-botao"
+            aria-pressed="false"
+            aria-label="Ativar modo alto contraste"
+          >
+            🌙
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===============================
+       CONTEÚDO PRINCIPAL
+  =============================== -->
+  <main>
+    <section class="contato">
+      <h2>Fale Conosco</h2>
+
+      <form id="formContato" novalidate>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <div class="info">
+        <p><strong>Endereço:</strong> Rua Solidariedade, 123 - Rio de Janeiro, RJ</p>
+        <p><strong>Telefone:</strong> (21) 99999-9999</p>
+        <p><strong>E-mail:</strong> contato@esperancaviva.org.br</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===============================
+       RODAPÉ
+  =============================== -->
+  <footer>
+    <p>&copy; 2025 Esperança Viva. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- ===============================
+       SCRIPTS
+  =============================== -->
+  <script src="js/contrast.js"></script>
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const formContato = document.getElementById("formContato");
+
+    // 🔹 Controle do menu hamburguer
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('ativo');
+        toggle.classList.toggle('open');
+      });
+    }
+
+    // 🔹 Função de toast (mensagem flutuante)
+    function exibirToast(mensagem, tipo = "sucesso") {
+      const toastAntigo = document.querySelector(".toast");
+      if (toastAntigo) toastAntigo.remove();
+
+      const toast = document.createElement("div");
+      toast.className = `toast toast-${tipo}`;
+      toast.innerHTML = mensagem;
+      document.body.appendChild(toast);
+
+      setTimeout(() => toast.classList.add("ativo"), 100);
+      setTimeout(() => {
+        toast.classList.remove("ativo");
+        setTimeout(() => toast.remove(), 500);
+      }, 7000);
+    }
+
+    // 🔹 Validação e envio do formulário
+    formContato.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const nome = formContato.nome.value.trim();
+      const email = formContato.email.value.trim();
+      const mensagem = formContato.mensagem.value.trim();
+
+      if (nome.length < 3 || !email.includes("@") || mensagem.length < 5) {
+        exibirToast("Verifique os campos obrigatórios antes de enviar.", "erro");
+        return;
+      }
+
+      exibirToast("Mensagem enviada com sucesso! Entraremos em contato em breve.", "sucesso");
+      formContato.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1102 @@
+/* =============================== 🌿 DESIGN SYSTEM – ESPERANÇA VIVA =============================== */
+:root {
+  --cor-primaria: #6e9273;
+  --cor-secundaria: #afd9bd;
+  --cor-destaque: #f4b400;
+  --cor-clara: #ffffff;
+  --cor-escura: #1f1f1f;
+  --cor-neutra-1: #f8f9f8;
+  --cor-neutra-2: #d9e0dc;
+  --cor-neutra-3: #9ca9a0;
+  --fonte-principal: 'Poppins', sans-serif;
+  --fonte-titulo: 2.5em;
+  --fonte-subtitulo: 1.5rem;
+  --fonte-texto: 1.2rem;
+  --fonte-pequena: 1rem;
+  --fonte-botao: 1rem;
+  --espaco-xs: 8px;
+  --espaco-sm: 9px;
+  --espaco-md: 10px;
+  --espaco-lg: 15px;
+  --espaco-xl: 25px;
+  --espaco-xxl: 32px;
+}
+
+/* =============================== RESET / BASE GLOBAL =============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fonte-principal);
+}
+
+body {
+  background: var(--cor-neutra-1);
+  color: var(--cor-escura);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 25%;
+  height: auto;
+}
+
+/* =============================== CABEÇALHO (LOGO AO LADO DO TÍTULO) =============================== */
+.site-header {
+  background: var(--cor-primaria);
+  color: var(--cor-clara);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espaco-lg) var(--espaco-md);
+  text-align: center;
+  position: relative;
+  z-index: 1000;
+}
+
+/* LOGO + TÍTULO */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-sm);
+  margin-bottom: var(--espaco-sm);
+}
+
+.header-content .logo {
+  height: 85px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.header-content .logo:hover {
+  transform: scale(1.08);
+}
+
+.header-content h1 {
+  font-size: 2rem;
+  color: var(--cor-clara);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =============================== NAVEGAÇÃO CENTRALIZADA =============================== */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--espaco-md);
+  list-style: none;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  color: var(--cor-clara);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: var(--espaco-xs) var(--espaco-sm);
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover,
+nav a.ativo {
+  background: var(--cor-secundaria);
+  color: var(--cor-escura);
+}
+
+/* Espaçamento entre menu e conteúdo */
+main,
+#app {
+  margin-top: var(--espaco-xxs);
+}
+
+/* =============================== DROPDOWN =============================== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown>a::after {
+  content: " ▾";
+  font-size: 0.8em;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background: var(--cor-primaria);
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  border-radius: 6px;
+  list-style: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
+.submenu li a {
+  display: block;
+  padding: var(--espaco-sm);
+  color: var(--cor-clara);
+  text-align: left;
+}
+
+.submenu li a:hover {
+  background: var(--cor-secundaria);
+  color: var(--cor-escura);
+}
+
+/* =============================== TÍTULOS E TEXTOS (ORIGINAIS) =============================== */
+h1,
+h2,
+h3 {
+  color: var(--cor-primaria);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--espaco-md);
+}
+
+p {
+  color: var(--cor-escura);
+  font-size: var(--fonte-texto);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: var(--espaco-sm);
+}
+
+/* =============================== HERO =============================== */
+.hero {
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  color: var(--cor-clara);
+  text-align: center;
+  padding: var(--espaco-xl) var(--espaco-lg);
+}
+
+.hero h2 {
+  color: var(--cor-clara);
+  font-size: var(--fonte-titulo);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--cor-destaque);
+  color: var(--cor-escura);
+  padding: var(--espaco-sm) var(--espaco-md);
+  border-radius: 8px;
+  margin-top: var(--espaco-sm);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: var(--cor-secundaria);
+  color: var(--cor-clara);
+}
+
+/* =============================== GALERIA – 4x4 CENTRALIZADA =============================== */
+.galeria {
+  padding: var(--espaco-xl) var(--espaco-lg);
+  background: var(--cor-neutra-1);
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espaco-lg);
+  justify-items: center;
+}
+
+.gallery img {
+  width: 100%;
+  height: 350px;
+  max-width: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* LIGHTBOX */
+#lightbox {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+}
+
+#lightbox img {
+  width: 1024px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =============================== PÁGINA DE PROJETOS =============================== */
+.projetos {
+  padding: var(--espaco-xl) var(--espaco-lg);
+  text-align: center;
+  background: var(--cor-neutra-1);
+}
+
+.projetos .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--espaco-lg);
+  margin-bottom: var(--espaco-xl);
+}
+
+.projetos .card {
+  background: var(--cor-clara);
+  border-radius: 12px;
+  padding: var(--espaco-md);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.projetos .card:hover {
+  transform: translateY(-5px);
+}
+
+.projetos .card h3 {
+  color: var(--cor-primaria);
+  margin-bottom: var(--espaco-sm);
+}
+
+.projetos img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  border-radius: 10px;
+}
+
+/* =============================== FORMULÁRIOS =============================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-sm);
+  background: var(--cor-clara);
+  border-radius: 12px;
+  padding: var(--espaco-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form label {
+  text-align: left;
+  font-weight: 500;
+  color: var(--cor-escura);
+}
+
+input,
+textarea {
+  padding: var(--espaco-sm);
+  border: 1px solid var(--cor-neutra-2);
+  border-radius: 8px;
+  font-size: var(--fonte-texto);
+}
+
+button {
+  background: var(--cor-primaria);
+  color: var(--cor-clara);
+  border: none;
+  border-radius: 8px;
+  padding: var(--espaco-sm);
+  font-size: var(--fonte-botao);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--cor-secundaria);
+  color: var(--cor-escura);
+}
+
+/* =============================== RODAPÉ =============================== */
+footer {
+  background: var(--cor-primaria);
+  color: var(--cor-clara);
+  text-align: center;
+  padding: var(--espaco-md);
+  font-size: var(--fonte-pequena);
+  margin-top: auto;
+}
+
+/* ===============================
+   MODO ALTO CONTRASTE
+   =============================== */
+body.high-contrast {
+  background: #000;
+  color: #fff;
+}
+
+body.high-contrast header,
+body.high-contrast footer {
+  background: #000;
+  color: #fff;
+}
+
+body.high-contrast nav a {
+  color: #ffd700; /* amarelo dourado */
+}
+
+body.high-contrast nav a:hover,
+body.high-contrast nav a.ativo {
+  background: #ffd700;
+  color: #000;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3 {
+  color: #ffd700;
+}
+
+body.high-contrast .btn {
+  background: #ffd700;
+  color: #000;
+  border: 1px solid #ffd700;
+}
+
+body.high-contrast .btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+body.high-contrast form,
+body.high-contrast .card,
+body.high-contrast .gallery img {
+  background: #000;
+  color: #fff;
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+body.high-contrast input,
+body.high-contrast textarea {
+  background: #000;
+  color: #fff;
+  border: 1px solid #ffd700;
+}
+
+body.high-contrast input::placeholder,
+body.high-contrast textarea::placeholder {
+  color: #ccc;
+}
+
+body.high-contrast button {
+  background: #ffd700;
+  color: #000;
+  border: none;
+}
+
+body.high-contrast button:hover {
+  background: #fff;
+  color: #000;
+}
+
+body.high-contrast .menu-toggle span {
+  background: #fff;
+}
+
+body.high-contrast .hero {
+  background: linear-gradient(135deg, #111, #222);
+  color: #fff;
+}
+
+body.high-contrast .hero h2 {
+  color: #ffd700;
+}
+
+body.high-contrast .hero p {
+  color: #fff;
+}
+
+body.high-contrast .logo {
+  filter: brightness(3.5);
+}
+
+body.high-contrast .sobre h3,
+body.high-contrast .sobre p {
+  color: #fff !important;
+}
+
+footer {
+  background: var(--cor-primaria);
+  color: var(--cor-escura); /* texto escuro no modo claro */
+  text-align: center;
+  padding: var(--espaco-md);
+  font-size: var(--fonte-pequena);
+  margin-top: auto;
+}
+
+/* ===============================
+   AJUSTES DE CONTRASTE – FORMULÁRIOS E TEXTOS
+   =============================== */
+body.high-contrast .contato label,
+body.high-contrast .contato p,
+body.high-contrast .contato h2,
+body.high-contrast form label {
+  color: #ffffff; /* texto branco no modo escuro */
+}
+
+/* campos do formulário com borda dourada e texto claro */
+body.high-contrast input,
+body.high-contrast textarea,
+body.high-contrast select {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #fbc02d;
+}
+
+body.high-contrast input::placeholder,
+body.high-contrast textarea::placeholder {
+  color: #bbbbbb;
+}
+
+/* =======================================
+   ♿ AJUSTES DE CONTRASTE – PÁGINA PROJETOS
+   ======================================= */
+body.high-contrast main,
+body.high-contrast section,
+body.high-contrast .projetos,
+body.high-contrast .card,
+body.high-contrast .doacao-voluntariado {
+  background: #000 !important;
+  color: #ffffff !important;
+}
+
+/* Caixas de projetos */
+body.high-contrast .card {
+  border: 2px solid #fbc02d !important;
+  box-shadow: 0 0 8px rgba(251, 192, 45, 0.4);
+}
+
+/* Títulos dentro das caixas e seções */
+body.high-contrast .card-title,
+body.high-contrast .section-title,
+body.high-contrast h2,
+body.high-contrast h3 {
+  color: #ffffff !important;
+}
+
+/* Textos, parágrafos e links */
+body.high-contrast p,
+body.high-contrast a,
+body.high-contrast strong {
+  color: #ffffff !important;
+}
+
+/* Botões dentro da página */
+body.high-contrast .btn,
+body.high-contrast button {
+  background-color: #fbc02d !important;
+  color: #000 !important;
+  border: none !important;
+}
+
+body.high-contrast .btn:hover,
+body.high-contrast button:hover {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+/* Rodapé */
+body.high-contrast footer {
+  background: #000 !important;
+  color: #ffffff !important;
+}
+
+/* =======================================
+   ♿ AJUSTES DE CONTRASTE – GALERIA
+   ======================================= */
+body.high-contrast .galeria,
+body.high-contrast main {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+body.high-contrast .gallery img {
+  border: 3px solid #fbc02d;
+  border-radius: 10px;
+  filter: brightness(1.1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+body.high-contrast .gallery img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3);
+}
+
+body.high-contrast .section-title {
+  color: #ffffff !important;
+}
+
+/* Lightbox */
+body.high-contrast #lightbox {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+/* ===============================
+   Modo alto contraste (escuro)
+   =============================== */
+body.high-contrast footer {
+  background: #000;              /* fundo preto */
+  color: #ffffff !important;     /* texto branco */
+}
+
+body.high-contrast footer p {
+  color: #ffffff !important;     /* garante branco no <p> também */
+}
+
+/* Modo alto contraste (escuro) */
+body.high-contrast footer {
+  background: #000;
+  color: #f4b400; /* mantém legível e coerente com o restante */
+}
+
+/* ===============================
+   ♿ ESTILO DO BOTÃO DE ALTO CONTRASTE
+   =============================== */
+#toggle-contrast {
+  font-size: 1.5rem;       /* tamanho do ícone 🌙 / ☀️ */
+  background: #6e9273;     /* fundo dourado */
+  color: #000;             /* ícone preto */
+  border-radius: 6px;
+  padding: 1px 1px;        /* ajusta espaçamento interno */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#toggle-contrast:hover {
+  background: #fff;
+  color: #000;
+  transform: scale(1.05);  /* leve aumento ao passar o mouse */
+}
+
+/* ===============================
+   ♿ BOTÃO DE ALTO CONTRASTE – LIMPO E ALINHADO
+   =============================== */
+#toggle-contrast {
+  background: transparent;
+  border: none;
+  color: #f4b400; /* amarelo suave */
+  font-size: 1.4rem;
+  line-height: 1; /* mantém centralizado */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 6px; /* distância do último item do menu */
+  position: relative;
+  top: -1px; /* corrige o leve “caimento” do ícone */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#toggle-contrast:hover {
+  color: #ffd700; /* dourado mais claro no hover */
+  transform: scale(1.1);
+}
+
+/* =============================== RESPONSIVIDADE =============================== */
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 700px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery img {
+    width: 90%;
+    height: auto;
+  }
+
+  .header-content {
+    flex-direction: row;
+  }
+
+  .header-content .logo {
+    height: 60px;
+  }
+}
+
+/* ===============================
+   IMAGEM HOME
+   =============================== */
+.sobre-img {
+  display: block;
+  margin: 30px auto; /* Centraliza horizontalmente */
+  width: 50%; /* controla o tamanho */
+  max-width: 400px; /* limite de largura */
+  height: auto;
+  border-radius: 10px; /* opcional, arredonda os cantos */
+  transition: transform 0.3s ease;
+}
+
+.sobre-img:hover {
+  transform: scale(1.03);
+}
+
+/* ===============================
+   💬 Toasts (mensagens flutuantes)
+   =============================== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-weight: 600;
+  color: var(--cor-clara);
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.4s ease;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast.ativo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🟢 Sucesso */
+.toast-sucesso {
+  background: var(--cor-primaria);
+}
+
+/* 🔴 Erro */
+.toast-erro {
+  background: #e53935;
+}
+
+/* ✨ Ícones automáticos nos toasts */
+.toast::before {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.toast-sucesso::before {
+  content: "✅";
+}
+
+.toast-erro::before {
+  content: "❌";
+}
+
+/* ===============================
+   MENU HAMBÚRGUER (RESPONSIVIDADE MOBILE)
+   =============================== */
+
+/* Botão (3 linhas) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 28px;
+  height: 20px;
+  margin-left: auto; /* joga o botão para a direita */
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle span {
+  background: var(--cor-clara);
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Efeito “X” ao abrir */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===============================
+   MENU MOBILE
+   =============================== */
+@media (max-width: 768px) {
+  /* Cabeçalho: logo + botão lado a lado */
+  .header-content {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    background: var(--cor-primaria);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 20px 0;
+    gap: 20px;
+    display: none;
+    border-top: 2px solid var(--cor-secundaria);
+  }
+
+  nav ul.ativo {
+    display: flex;
+  }
+
+  nav a {
+    font-size: 1.1rem;
+  }
+
+  .dropdown:hover .submenu {
+    position: static;
+    box-shadow: none;
+  }
+}
+
+/* ===============================
+   Ajustes do menu no mobile
+   =============================== */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    background: var(--cor-primaria);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 20px 0;
+    gap: 20px;
+    display: none;
+    border-top: 2px solid var(--cor-secundaria);
+  }
+
+  nav ul.ativo {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav a {
+    font-size: 1.1rem;
+  }
+
+  .dropdown:hover .submenu {
+    position: static;
+    box-shadow: none;
+  }
+}
+
+/* ===============================
+   FONTES RESPONSIVAS – MOBILE
+   =============================== */
+@media (max-width: 768px) {
+  :root {
+    --fonte-titulo: 1.5rem;
+    --fonte-subtitulo: 1.2rem;
+    --fonte-texto: 0.93rem;
+    --fonte-pequena: 0.8rem;
+    --fonte-botao: 0.9rem;
+  }
+
+  h1, h2, h3 {
+    line-height: 1.3;
+  }
+
+  p, label, input, button {
+    line-height: 1.0;
+  }
+}
+
+/* ===============================
+   ALINHAMENTO HEADER (MOBILE)
+   =============================== */
+
+@media (max-width: 768px) {
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 103%;
+    padding: 0 15px;
+  }
+
+  /* Centraliza o nome entre logo e menu */
+  .header-content h1 {
+    flex: 1;
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  /* Reduz o tamanho do botão hamburguer */
+  .menu-toggle {
+    width: 20px;  /* antes era 28px */
+    height: 20px; /* antes era 20px */
+  }
+
+  .menu-toggle span {
+    height: 3px; /* mais fino e elegante */
+  }
+
+  .header-content .logo {
+    height: 38px; /* levemente menor */
+  }
+}
+
+.site-header .logo {
+  height: 80px !important;
+}
+
+@media (max-width: 768px) {
+  #lightbox img {
+    max-width: 95vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 22px; /* mais espaço interno */
+    font-size: 1rem; /* mantém legível */
+  }
+}
+
+/* ===============================
+   ♿ BARRA DE ACESSIBILIDADE (MOBILE)
+   =============================== */
+.acessibilidade-topo {
+  display: none;
+  background: var(--cor-primaria);
+  text-align: center;
+  padding: 1px 0;
+}
+
+.acessibilidade-topo .acessibilidade-botao {
+  font-size: 1.0rem; /* controla o tamanho */
+  color: var(--cor-clara);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.acessibilidade-topo .acessibilidade-botao:hover {
+  transform: scale(1.1);
+  color: var(--cor-destaque);
+}
+
+/* Ativa só no mobile */
+@media (max-width: 768px) {
+  .acessibilidade-topo {
+    display: block;
+  }
+
+  /* Esconde o botão dentro do menu */
+  #menu li:last-child {
+    display: none;
+  }
+}
+
+/* ===============================
+   ♿ AJUSTES DE CONTRASTE (MODO ESCURO)
+   =============================== */
+
+body.high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* 🔹 Header e footer totalmente pretos no modo escuro */
+body.high-contrast header.site-header,
+body.high-contrast footer {
+  background: #000 !important;
+  color: #fff !important;
+  border: none;
+}
+
+/* 🔹 Links e itens do menu */
+body.high-contrast nav a {
+  color: #fff !important;
+}
+
+body.high-contrast nav a:hover,
+body.high-contrast nav a.ativo {
+  background: #f4b400 !important;
+  color: #000 !important;
+}
+
+/* 🔹 Botão hamburguer */
+body.high-contrast .menu-toggle span {
+  background: #fff !important;
+}
+
+/* 🔹 Submenu e menu mobile */
+body.high-contrast nav ul {
+  background: #000 !important;
+  border-top: 2px solid #fff;
+}
+
+body.high-contrast nav ul li a {
+  color: #fff !important;
+}
+
+body.high-contrast nav ul li a:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
+
+/* 🔹 Logo e título */
+body.high-contrast .logo {
+  filter: brightness(0) invert(1);
+}
+
+body.high-contrast .header-content h1 {
+  color: #f4b400 !important;
+}
+
+/* ===== corrigir linha branca no desktop ===== */
+@media (min-width: 769px) {
+  body.high-contrast nav ul {
+    border-top: none !important;
+    box-shadow: none !important;
+  }
+}
+
+body.high-contrast .acessibilidade-topo {
+  background: #000 !important;
+  border-bottom: 1px solid #000 !important;
+}
+
+body.high-contrast .acessibilidade-topo .acessibilidade-botao {
+  color: #f4b400 !important;
+}
+
+body.high-contrast .acessibilidade-topo .acessibilidade-botao[aria-pressed="true"] {
+  background: #f4b400 !important; /* fundo dourado */
+  color: #000 !important;          /* ícone preto */
+  border-radius: 8px;
+  padding: 4px 8px;
+  transition: all 0.3s ease;
+}
+
+body.high-contrast .acessibilidade-topo .acessibilidade-botao[aria-pressed="true"]:hover {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+/* ===============================
+   ♿ Correção do botão de contraste na página inicial
+   =============================== */
+.acessibilidade-botao,
+.acessibilidade-topo .acessibilidade-botao {
+  font-size: 1.4rem !important;
+  color: #f4b400 !important;
+  background: transparent !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 3px !important;
+  margin: 0 auto !important;
+  transition: all 0.3s ease !important;
+}
+
+body.high-contrast .acessibilidade-botao[aria-pressed="true"] {
+  background: #f4b400 !important;
+  color: #000 !important;
+  border-radius: 8px;
+}
+
+
+
+
